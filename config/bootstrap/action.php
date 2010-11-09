@@ -23,6 +23,20 @@ use lithium\core\Environment;
 use lithium\action\Dispatcher;
 
 /**
+ * Define the basic environment detector
+ * dev.* domains will be `development`, stage.* will be `staging`
+ * and the rest as `production`
+ */
+Environment::is(function($request) {
+    $host = $request->env('HTTP_HOST');
+    if (strpos($host, "dev.") !== false)
+        return 'development';
+    if (strpos($host, "stage.") !== false)
+        return 'staging';
+    return 'production';
+});
+
+/**
  * This filter intercepts the `run()` method of the `Dispatcher`, and first passes the `'request'`
  * parameter (an instance of the `Request` object) to the `Environment` class to detect which
  * environment the application is running in. Then, loads all application routes in all plugins,
