@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>{{this.title}}</title>
+    {{ this.charset }}
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/underscore.js"></script>
+    <script type="text/javascript" src="/js/backbone.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/css/global.css" />
+    {% for script in this.scripts %}
+    {{script}}
+    {% endfor %}
+</head>
+<body>
+	<div id="wrapper">
+        {{this.content}}
+    </div>
+    <script type="text/javascript">
+        // Start the real app here
+    </script>
+</body>
+</html>
