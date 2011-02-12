@@ -9,17 +9,7 @@
 use lithium\net\http\Router;
 use lithium\core\Environment;
 
-/**
- * Here, we are connecting '/' (base path) to controller called 'Pages',
- * its action called 'view', and we pass a param to select the view file
- * to use (in this case, /app/views/pages/home.html.php)...
- */
-Router::connect('/', array('Pages::view', 'args' => array('home')));
-
-/**
- * ...and connect the rest of 'Pages' controller's urls.
- */
-Router::connect('/pages/{:args}', 'Pages::view');
+Router::connect('/', array('App::bootstrap',));
 
 /**
  * Connect the testing routes.

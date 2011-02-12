@@ -50,12 +50,3 @@ Libraries::add('lithium');
  * your main application, but generally you should not need to change any settings.
  */
 Libraries::add('app', array('default' => true));
-
-/**
- * Add some plugins
- */
-Libraries::add('li3_twig', array(
-    'bootstrap' => true
-));
-
-?>
