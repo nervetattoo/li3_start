@@ -48,6 +48,11 @@ if (!include LITHIUM_LIBRARY_PATH . '/lithium/core/Libraries.php') {
 require __DIR__ . '/bootstrap/libraries.php';
 
 /**
+ * This file contains configuration for error handling
+ */
+require __DIR__ . '/bootstrap/errors.php';
+
+/**
  * This file contains configurations for connecting to external caching resources, as well as
  * default caching rules for various systems within your application
  */

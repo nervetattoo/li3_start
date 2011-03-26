@@ -1,9 +1,22 @@
-<div id=content></div>
+<div id=content>
+Rendered
+</div>
 
 <script type="text/javascript" src="/js/app.js"></script>
+<?php
+/**
+ * If you dont use Backbone (which is awesome) just remove this script,
+ * and most likely you'll want to remove all of `AppController::bootstrap`
+ * which is meant to provision and fire up a backbone app instead
+ * of regular server side rendered html
+ */
+?>
 <script type="text/javascript">
 ;$(function(){
-    // Start the real Backbone app here
+    /**
+     * This starts a class App that inherits Backbone.Controller
+     * The App is by default found in `webroot/js/app.js`
+     */
     window.app = new App();
     Backbone.history.start();
 });

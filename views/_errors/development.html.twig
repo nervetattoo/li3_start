@@ -1,0 +1,65 @@
+<h3>Exception</h3>
+
+<div class="lithium-exception-class">
+    {{class}}
+
+    {% if code %}
+        <span class="code">(code {{code}})</span>
+    {% endif %}
+</div>
+
+<div class="lithium-exception-message">
+{{message}}
+</div>
+
+<h3 id="source">Source</h3>
+
+<div id="sourceCode"></div>
+
+<h3>Stack Trace</h3>
+
+<div class="lithium-stack-trace">
+    <ol>
+        {% for id, frame in stack %}
+        <li>
+            <tt><a href="#source" id="{{id}}" class="display-source-excerpt">
+                {{frame.functionRef}}
+            </a></tt>
+            <div id="sourceCode{{id}}" style="display: none;">
+
+                <div class="lithium-exception-location">
+                    {{frame.location}}
+                </div>
+
+                <div class="lithium-code-dump">
+                    <pre>
+<code>
+{% for num, content in frame.code %}
+{% if frame.line == num %}<span class="code-highlight">{% endif %}
+{{content}}
+{% if frame.line == num %}</span>{% endif %}
+{% endfor %}
+</code>
+                    </pre>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+
+<script type="text/javascript">
+    head.ready(function() {
+        var $ = function() { return document.getElementById.apply(document, arguments); };
+        var links = document.getElementsByTagName('a');
+
+        for (i = 0; i < links.length; i++) {
+            if (links[i].className.indexOf('display-source-excerpt') >= 0) {
+                links[i].onclick = function() {
+                    $('sourceCode').innerHTML = $('sourceCode' + this.id).innerHTML;
+                }
+            }
+        }
+        $('sourceCode').innerHTML = $('sourceCode0').innerHTML;
+    });
+</script>
