@@ -17,7 +17,9 @@ Rendered
      * This starts a class App that inherits Backbone.Controller
      * The App is by default found in `webroot/js/app.js`
      */
-    window.app = new App();
-    Backbone.history.start();
+    if (typeof window.App != "undefined") {
+        window.app = new App();
+        Backbone.history.start();
+    }
 });
 </script>
